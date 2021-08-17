@@ -2,13 +2,17 @@ package nzhusupali.project.telegram
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
 import com.mikepenz.materialdrawer.DrawerBuilder
+import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import nzhusupali.project.telegram.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         createDrawer()
     }
 
+    // Меню
     private fun createDrawer() {
         mDrawer = DrawerBuilder()
             .withActivity(this)
@@ -47,13 +52,86 @@ class MainActivity : AppCompatActivity() {
             .withSelectedItem(-1)
             .withAccountHeader(mHeader)
             .addDrawerItems(
+
                 PrimaryDrawerItem().withIdentifier(100)
                     .withIconTintingEnabled(true)
                     .withName("Create group")
-                    .withSelectable(false)
-            ).build()
+                    .withIcon(R.drawable.ic_menu_create_groups)
+                    .withSelectable(false),
+
+                PrimaryDrawerItem().withIdentifier(101)
+                    .withIconTintingEnabled(true)
+                    .withName("Create secret chat")
+                    .withIcon(R.drawable.ic_menu_secret_chat)
+                    .withSelectable(false),
+
+
+                PrimaryDrawerItem().withIdentifier(102)
+                    .withIconTintingEnabled(true)
+                    .withName("Create channel")
+                    .withIcon(R.drawable.ic_menu_create_channel)
+                    .withSelectable(false),
+
+                PrimaryDrawerItem().withIdentifier(103)
+                    .withIconTintingEnabled(true)
+                    .withName("Contacts")
+                    .withIcon(R.drawable.ic_menu_contacts)
+                    .withSelectable(false),
+
+
+
+                PrimaryDrawerItem().withIdentifier(104)
+                    .withIconTintingEnabled(true)
+                    .withName("Calls")
+                    .withIcon(R.drawable.ic_menu_phone)
+                    .withSelectable(false),
+
+                PrimaryDrawerItem().withIdentifier(105)
+                    .withIconTintingEnabled(true)
+                    .withName("Favorite")
+                    .withIcon(R.drawable.ic_menu_favorites)
+                    .withSelectable(false),
+
+                PrimaryDrawerItem().withIdentifier(106)
+                    .withIconTintingEnabled(true)
+                    .withName("Settings")
+                    .withIcon(R.drawable.ic_menu_settings)
+                    .withSelectable(false),
+
+                DividerDrawerItem(),
+
+                PrimaryDrawerItem().withIdentifier(107)
+                    .withIconTintingEnabled(true)
+                    .withName("Invite friends")
+                    .withIcon(R.drawable.ic_menu_invate)
+                    .withSelectable(false),
+
+                PrimaryDrawerItem().withIdentifier(108)
+                    .withIconTintingEnabled(true)
+                    .withName("Telegram features")
+                    .withIcon(R.drawable.ic_menu_help)
+                    .withSelectable(false),
+
+
+                // Обработчик нажатия на кнопки
+            ).withOnDrawerItemClickListener(object: Drawer.OnDrawerItemClickListener{
+
+                override fun onItemClick(
+                    view: View?,
+                    position: Int,
+                    drawerItem: IDrawerItem<*>
+                ): Boolean {
+
+                    Toast.makeText(applicationContext,"clicked $position", Toast.LENGTH_SHORT).show()
+                    return false
+
+                }
+
+            })
+            .build()
     }
 
+    // Аккаунты добавленные
     private fun createHeader() {
         mHeader = AccountHeaderBuilder()
             .withActivity(this)
@@ -61,7 +139,12 @@ class MainActivity : AppCompatActivity() {
             .addProfiles(
                 ProfileDrawerItem().withName("Nurislam Zhusupali")
                     .withEmail("+7 747 900 2083")
-            ).build()
+            )
+            .addProfiles(
+                ProfileDrawerItem().withName("Cook")
+                    .withEmail("+7 778 188 8073")
+            )
+            .build()
     }
 
     private fun initFields() {
