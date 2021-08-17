@@ -14,6 +14,8 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import nzhusupali.project.telegram.databinding.ActivityMainBinding
+import nzhusupali.project.telegram.ui.ChatsFragment
+import nzhusupali.project.telegram.ui.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,8 +29,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
     }
 
     override fun onStart() {
@@ -38,7 +38,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFunc() {
+        // Fragment in mainActivity
         setSupportActionBar(mToolbar)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.dataContainer, ChatsFragment()).commit()
+
         createHeader()
         createDrawer()
     }
@@ -121,14 +125,17 @@ class MainActivity : AppCompatActivity() {
                     position: Int,
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
+                    when(position) {
+                        7 -> supportFragmentManager.beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.dataContainer, SettingsFragment())
+                            .commit()
+                    }
 
-                    Toast.makeText(applicationContext,"clicked $position", Toast.LENGTH_SHORT).show()
                     return false
-
                 }
 
-            })
-            .build()
+            }).build()
     }
 
     // Аккаунты добавленные
