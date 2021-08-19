@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFunc() {
+        setSupportActionBar(mToolbar)
         mAppDrawer.create() // Создаём боковое меню
         // Fragment in mainActivity
-        setSupportActionBar(mToolbar)
         supportFragmentManager.beginTransaction()
             .replace(R.id.dataContainer, ChatsFragment()).commit()
 

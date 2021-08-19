@@ -2,4 +2,18 @@
     <string name="app_name">Telegram</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    // fragment_settings
+    <string name="settings_default_username">Nurislam Zhusupali</string>
+    <string name="settings_default_status">online</string>
+    <string name="settings_text_account">Account</string>
+    <string name="settings_default_number">+79355555555</string>
+    <string name="settings_label_phone_number">click, to change phone number</string>
+    <string name="settings_default_login">nzhusupali</string>
+    <string name="settings_label_login">user name</string>
+    <string name="settings_default_bio">Bio</string>
+    <string name="settings_label_bio">Add a few words about yourself</string>
+
+
 </resources>

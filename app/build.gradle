@@ -50,6 +50,9 @@ android {
             //required support lib modules
             implementation "androidx.recyclerview:recyclerview:1.2.1"
             implementation "androidx.annotation:annotation:1.2.0"
+            // Circle image view
+            implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 
 
         }
