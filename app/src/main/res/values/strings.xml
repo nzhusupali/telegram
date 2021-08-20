@@ -14,6 +14,9 @@
     <string name="settings_label_login">user name</string>
     <string name="settings_default_bio">Bio</string>
     <string name="settings_label_bio">Add a few words about yourself</string>
+        //action menu - settings
+        <string name="settings_menu_change_name">"Change name "</string>
+    <string name="settings_menu_logout">Log out</string>
 
 
 </resources>
